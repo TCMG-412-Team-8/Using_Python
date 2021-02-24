@@ -18,13 +18,33 @@ lines = {}
 hits = {}
 
 re.search(" 404 ", line)
+#Here's the new section of the code, I'm not sure what this part actually does or if we need it
+def handle_line_data(line_data)
+    global hits
+    global lines
+    dateobj = line_data["time_received_datetimeobj"]
+    datediff = now - dateobj
+    diffsec = dateddiff.total_seconds()
+
+    url = line_data["request_url"]
+    header = line_data["request_header_user_agent"]
+    ind = url+" - "+header
+    
+    if diffsec < oneweek:
+        return
+    lines[ind] = ind
+count = 0
+nomatch = 0
+
+
 
 
 
 #This is the while loop I was looking at to modify for our needs
 with open(logfile, "r") as f:
     line = f.readline()
-   while line:
+    
+while line:
     if (re.search(" 404 ", line) and not(re.search("/admin.min.css", line)) ):
         try:
          log_line_data = line_parser(line)
@@ -38,3 +58,4 @@ with open(logfile, "r") as f:
     else:
         nomatch += 1
     line = f.readline()
+f.close()
