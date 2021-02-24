@@ -22,8 +22,9 @@ re.search(" 404 ", line)
 
 
 #This is the while loop I was looking at to modify for our needs
-
-while line:
+with open(logfile, "r") as f:
+    line = f.readline()
+   while line:
     if (re.search(" 404 ", line) and not(re.search("/admin.min.css", line)) ):
         try:
          log_line_data = line_parser(line)
