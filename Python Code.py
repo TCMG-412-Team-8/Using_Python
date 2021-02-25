@@ -25,8 +25,8 @@ while(reader.readline()!=""):
     if line.count("1995") != 0:
         current += 1
         total += 1
-print(total)
-print(current)
+print("The total amount of requests are:",total)
+print('This is the total amount of requests in the last year (1995):',current)
 reader.close()
 
 
