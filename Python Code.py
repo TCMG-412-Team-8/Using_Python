@@ -27,6 +27,8 @@ while(reader.readline()!=""):
         total += 1
 print(total)
 print(current)
+reader.close()
+
 
 
 
