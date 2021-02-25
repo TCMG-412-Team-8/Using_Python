@@ -1,15 +1,19 @@
+import os.path
 import requests
 
-print('Downloading file request')
+if os.path.isfile('logfile.log'):
+    print ("Opening File")
+else:
+    print('Downloading file request')
 
-url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
-r = requests.get(url,allow_redirects=True)
+    url = 'https://s3.amazonaws.com/tcmg476/http_access_log'
+    r = requests.get(url,allow_redirects=True)
 
-open('logfile.txt','wb').write(r.content)
-reader = open("logfile.txt","r")
-print(r.status_code)
-print(r.encoding)
+    open('logfile.log','wb').write(r.content)
 
+    print(r.status_code)
+    print(r.encoding)
+reader = open("logfile.log", "r")
 reader.seek(0)
 
 line_number = reader.tell()
@@ -26,7 +30,7 @@ while(reader.readline()!=""):
         current += 1
         total += 1
 print("The total amount of requests are:",total)
-print('This is the total amount of requests in the last year (1995):',current)
+print("This is the total amount of requests in the last year (1995):",current)
 reader.close()
 
 
