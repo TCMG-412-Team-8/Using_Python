@@ -1,4 +1,5 @@
 import os.path
+import requests
 
 if os.path.isfile('logfile.log'):
     print ("Opening File")
