@@ -19,24 +19,12 @@ while(reader.readline()!=""):
     reader.seek(line_number)
     line = reader.readline()
     line_number = reader.tell()
-    date = ""
-    counter = 0
 
-    if line[0] == "l":
-        for i in line:
-            if counter >= 18 and counter <= 21:
-                date += i
-            counter += 1
-    elif line[0] == "r":
-        for i in line:
-            if counter >= 19 and counter <= 22:
-                date += i
-            counter += 1
-    #print(date)
-    total += 1
-    if float(date) == 1995:
+    if line.count("1994") != 0:
+        total += 1
+    if line.count("1995") != 0:
         current += 1
-
+        total += 1
 print(total)
 print(current)
 
